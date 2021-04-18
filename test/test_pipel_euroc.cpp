@@ -1,4 +1,3 @@
-// This file is part of SVO - Semi-direct Visual Odometry.
 //
 // Copyright (C) 2014 Christian Forster <forster at ifi dot uzh dot ch>
 // (Robotics and Perception Group, University of Zurich, Switzerland).
@@ -163,7 +162,7 @@ void BenchmarkNode::runFromFolder()
   for(int ni=100; ni<nImages; ni++)
   {
     // Read left and right images from file
-    imLeft = cv::imread(vstrImageLeft[ni],CV_LOAD_IMAGE_UNCHANGED);
+    imLeft = cv::imread(vstrImageLeft[ni],cv::IMREAD_UNCHANGED);
 
     assert(!imLeft.empty());
 

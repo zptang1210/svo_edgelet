@@ -132,7 +132,7 @@ void BenchmarkNode::runFromFolder()
         // if (cv::waitKey(1) >= 0) break;
 
         cv::Mat gray;
-        cv::cvtColor(image,gray,CV_BGR2GRAY);
+        cv::cvtColor(image,gray,cv::COLOR_BGR2GRAY);
 
         /*
         cv::Mat unimg;

@@ -6,6 +6,8 @@ SET(HAVE_G2O false)   #TRUE
 
 SET(DEBUG_OUTPUT TRUE) # Only relevant if build without ROS
 
+SET(ENV{ARM_ARCHITECTURE} TRUE)
+
 ################################################################################
 
 SET(PROJECT_NAME svo_edgelete_live)
@@ -28,7 +30,8 @@ ENDIF()
 # Set build flags, set ARM_ARCHITECTURE environment variable on Odroid
 SET(CMAKE_CXX_FLAGS "-Wall -D_LINUX -D_REENTRANT -march=native -Wno-unused-variable -Wno-unused-but-set-variable -Wno-unknown-pragmas")
 IF(DEFINED ENV{ARM_ARCHITECTURE})
-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfpu=neon -march=armv7-a")
+  #SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfpu=neon -march=armv7-a")
+  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ffast-math -flto -march=armv8-a+crypto -mcpu=cortex-a57+crypto")
 ELSE()
   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmmx -msse -msse -msse2 -msse3 -mssse3")
 ENDIF()
@@ -93,7 +96,7 @@ LIST(APPEND SOURCEFILES
   src/fast_10_score.cpp
   src/fast_nonmax_3x3.cpp
   src/fast_10.cpp
-  src/faster_corner_10_sse.cpp
+  #src/faster_corner_10_sse.cpp
 
   src/slamviewer.cpp
   )
